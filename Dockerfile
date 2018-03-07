@@ -1,4 +1,4 @@
-from nginx
+from nginx:alpine
 
 copy ./scripts/nginx.tpl /tmp
 copy ./scripts/access_file.tpl /tmp
