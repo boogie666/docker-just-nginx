@@ -1,6 +1,8 @@
-from nginx:alpine
+from nginx
 
 copy ./scripts/nginx.tpl /tmp
+copy ./scripts/access_file.tpl /tmp
 
-cmd "envsubst < /tmp/nginx.tpl > /etc/nginx/nginx.conf"
-
+copy ./scripts/run_nginx.sh /bin
+run chmod 755 /bin/run_nginx.sh
+cmd run_nginx.sh
