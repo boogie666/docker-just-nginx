@@ -6,6 +6,10 @@ upstream backend{
 server {
 	listen ${HTTP_PORT};
 	client_max_body_size ${CLIENT_MAX_BODY_SIZE};
+	location /health/ {
+		root /healthcheck;
+		autoindex on;
+	}
 	location / {
 		proxy_pass http://backend/;
 		proxy_connect_timeout 600s;
@@ -15,4 +19,5 @@ server {
 		auth_basic "Resticted Content";
 		auth_basic_user_file /etc/nginx/access_file;
 	}
+	
 }
